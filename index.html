@@ -225,11 +225,25 @@ img, svg { display: block; }
 
 /* ===== HERO ===== */
 .hero {
+  position: relative;
   background-color: var(--white);
+  background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80");
+  background-size: cover;
+  background-position: center;
   padding: 220px 0 120px;
   text-align: center;
 }
+/* voile blanc fort : texture subtile, titre parfaitement lisible (couleur plate, pas de dégradé) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255,255,255,0.88);
+  pointer-events: none;
+}
 .hero-inner {
+  position: relative;
+  z-index: 1;
   max-width: 720px;
   margin: 0 auto;
   display: flex;
