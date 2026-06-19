@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impec Nettoyage — Nettoyage & entretien de bureaux professionnels · Hérault (34)</title>
+<meta name="description" content="Impec Nettoyage : entretien de bureaux, nettoyage de vitres, cabinets médicaux, fin de chantier et Airbnb dans tout l'Hérault (34). Réactif, fiable, impeccable.">
+
+<style>
+/* ===== IMPORT POLICES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Geist:wght@300;400;500&display=swap');
+
+/* ===== TOKENS COULEUR ===== */
+:root {
+  --navy:  #0A2540;
+  --white: #FFFFFF;
+  --ink:   #0D1B2A;
+  --sky:   #1A6FD4;
+  --sky-dark: #1560BA;
+  --mist:  #F5F7FA;
+  --slate: #6B7C93;
+
+  --maxw: 1180px;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  color: var(--ink);
+  background-color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img, svg { display: block; }
+
+/* ===== UTILITAIRES ===== */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.eyebrow {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sky);
+}
+
+.section-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-top: 16px;
+}
+
+.section-sub {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  color: var(--slate);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-top: 14px;
+  max-width: 540px;
+}
+
+.btn {
+  display: inline-block;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  background-color: var(--sky);
+  color: var(--white);
+  padding: 14px 36px;
+  border-radius: 4px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.btn:hover { background-color: var(--sky-dark); }
+
+/* trait court signature */
+.tick {
+  width: 24px;
+  height: 2px;
+  background-color: var(--sky);
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background-color: var(--white);
+  z-index: 1000;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+.header.scrolled {
+  border-bottom: 1px solid rgba(10,37,64,0.08);
+  box-shadow: 0 1px 0 rgba(10,37,64,0.08);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+}
+.logo-impec {
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 17px;
+}
+.logo-nettoyage {
+  font-weight: 400;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11.9px; /* ~70% */
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.nav-desktop a.nav-link {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--slate);
+  text-transform: lowercase;
+  transition: color 0.2s ease;
+}
+.nav-desktop a.nav-link:hover,
+.nav-desktop a.nav-link.active { color: var(--ink); }
+
+.nav-cta {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  background-color: var(--sky);
+  color: var(--white);
+  padding: 9px 20px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.nav-cta:hover { background-color: var(--sky-dark); }
+
+/* hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--ink);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* overlay mobile */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--white);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.mobile-overlay.open { opacity: 1; visibility: visible; }
+.mobile-overlay a {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--ink);
+  text-transform: lowercase;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.mobile-overlay.open a {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+.mobile-overlay .btn { margin-top: 12px; }
+
+/* ===== HERO ===== */
+.hero {
+  background-color: var(--white);
+  padding: 220px 0 120px;
+  text-align: center;
+}
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero h1 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: clamp(32px, 4.5vw, 58px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-top: 24px;
+}
+.hero h1 .line2 { color: var(--sky); display: block; }
+.hero-sub {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  color: var(--slate);
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 26px auto 0;
+}
+.hero .btn { margin-top: 38px; }
+.hero-credibility {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: var(--slate);
+  font-size: 13px;
+  margin-top: 44px;
+  letter-spacing: 0.01em;
+}
+
+/* ===== SECTIONS GÉNÉRIQUES ===== */
+section { scroll-margin-top: 68px; }
+
+.sec-pad { padding: 110px 0; }
+
+/* grille fenêtre SVG sur fond mist */
+.bg-mist {
+  background-color: var(--mist);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='220'%3E%3Cg stroke='%230A2540' stroke-width='0.7' opacity='0.04'%3E%3Cline x1='0' y1='0' x2='0' y2='220'/%3E%3Cline x1='42' y1='0' x2='42' y2='220'/%3E%3Cline x1='87' y1='0' x2='87' y2='220'/%3E%3Cline x1='135' y1='0' x2='135' y2='220'/%3E%3Cline x1='180' y1='0' x2='180' y2='220'/%3E%3Cline x1='228' y1='0' x2='228' y2='220'/%3E%3Cline x1='270' y1='0' x2='270' y2='220'/%3E%3Cline x1='0' y1='0' x2='300' y2='0'/%3E%3Cline x1='0' y1='55' x2='300' y2='55'/%3E%3Cline x1='0' y1='112' x2='300' y2='112'/%3E%3Cline x1='0' y1='170' x2='300' y2='170'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 300px 220px;
+}
+
+/* ===== SERVICES ===== */
+.services-head { max-width: 640px; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  margin-top: 64px;
+}
+.service-col .tick { margin-bottom: 22px; }
+.service-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+.service-icon svg { width: 28px; height: 28px; }
+.service-col h3 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.service-col p {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  color: var(--slate);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ===== SECTEURS ===== */
+.secteurs-grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 60px;
+  align-items: start;
+  margin-top: 56px;
+}
+.secteurs-text {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  color: var(--slate);
+  font-size: 19px;
+  line-height: 1.75;
+  max-width: 520px;
+}
+.secteurs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.secteur-item {
+  border-left: 2px solid var(--sky);
+  padding-left: 18px;
+}
+.secteur-item .s-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 16px;
+}
+.secteur-item .s-desc {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: var(--slate);
+  font-size: 13px;
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
+/* ===== CONFIANCE ===== */
+.confiance {
+  background-color: var(--navy);
+}
+.confiance .eyebrow { color: rgba(255,255,255,0.5); }
+.confiance .section-title { color: var(--white); }
+.confiance-head { max-width: 640px; }
+.confiance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 60px;
+}
+.conf-col {
+  padding: 0 40px;
+}
+.conf-col:not(:last-child) {
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.conf-col:first-child { padding-left: 0; }
+.conf-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  color: var(--white);
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.conf-label {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+.conf-footnote {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  text-align: center;
+  margin-top: 56px;
+}
+
+/* ===== TÉMOIGNAGES ===== */
+.temoignages-head { max-width: 640px; }
+.temoignages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 60px;
+}
+.temoignage {
+  padding: 0 40px;
+}
+.temoignage:not(:last-child) {
+  border-right: 1px solid rgba(10,37,64,0.08);
+}
+.temoignage:first-child { padding-left: 0; }
+.temoignage:last-child { padding-right: 0; }
+.stars {
+  font-family: 'Geist', sans-serif;
+  color: var(--sky);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+.temoignage blockquote {
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(13,27,42,0.85);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 18px 0 22px;
+}
+.temoignage .line-thin {
+  width: 32px;
+  height: 1px;
+  background-color: rgba(26,111,212,0.2);
+  margin-bottom: 16px;
+}
+.temoignage .author {
+  font-family: 'Geist', sans-serif;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  background-color: var(--white);
+  padding: 120px 0;
+  text-align: center;
+}
+.contact-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact .section-title { text-align: center; }
+.contact .section-sub {
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-email {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  color: var(--sky);
+  font-size: 20px;
+  margin-top: 40px;
+  transition: color 0.2s ease;
+}
+.contact-email:hover { color: var(--ink); }
+.contact-loc {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: var(--slate);
+  font-size: 13px;
+  margin-top: 14px;
+}
+.contact .btn { margin-top: 34px; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: var(--navy);
+  padding: 48px 0 36px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-brand .f-name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 15px;
+}
+.footer-brand .f-tag {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  margin-top: 8px;
+}
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-nav a {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  text-transform: lowercase;
+  transition: color 0.2s ease;
+}
+.footer-nav a:hover { color: var(--white); }
+.footer-contact a {
+  display: block;
+  font-family: 'Geist', sans-serif;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.footer-contact .f-email { color: var(--sky); }
+.footer-contact .f-insta { color: rgba(255,255,255,0.5); transition: color 0.2s ease; }
+.footer-contact .f-insta:hover { color: var(--white); }
+.footer-rule {
+  height: 1px;
+  background-color: rgba(255,255,255,0.08);
+  margin: 36px 0 24px;
+}
+.footer-bottom {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 32px; }
+  .secteurs-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .nav-desktop { display: none; }
+  .hamburger { display: flex; }
+
+  .hero { padding: 150px 0 90px; }
+
+  .sec-pad { padding: 80px 0; }
+
+  .services-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .confiance-grid { grid-template-columns: 1fr; gap: 40px; }
+  .conf-col { padding: 0 0 32px; }
+  .conf-col:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .temoignages-grid { grid-template-columns: 1fr; gap: 40px; }
+  .temoignage { padding: 0; }
+  .temoignage:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(10,37,64,0.08);
+    padding-bottom: 36px;
+  }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding-left: 20px; padding-right: 20px; }
+  .hero-sub { font-size: 16px; }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .mobile-overlay.open a { animation: none; opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#hero" class="logo" aria-label="Impec Nettoyage — accueil">
+      <span class="logo-impec">Impec</span>
+      <span class="logo-nettoyage">Nettoyage</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="#services" class="nav-link">services</a>
+      <a href="#secteurs" class="nav-link">secteurs</a>
+      <a href="#confiance" class="nav-link">confiance</a>
+      <a href="#contact" class="nav-link">contact</a>
+      <a href="mailto:robin.laq@gmail.com?subject=Demande%20de%20devis%20-%20Impec%20Nettoyage" class="nav-cta" aria-label="Demander un devis par email">Demander un devis</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== OVERLAY MOBILE ===== -->
+<div class="mobile-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu mobile">
+  <a href="#services" class="m-link">services</a>
+  <a href="#secteurs" class="m-link">secteurs</a>
+  <a href="#confiance" class="m-link">confiance</a>
+  <a href="#contact" class="m-link">contact</a>
+  <a href="mailto:robin.laq@gmail.com?subject=Demande%20de%20devis%20-%20Impec%20Nettoyage" class="btn" aria-label="Demander un devis par email">Demander un devis</a>
+</div>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+    <p class="eyebrow">Nettoyage professionnel · Hérault (34)</p>
+    <h1>
+      Des espaces impeccables,
+      <span class="line2">sans effort de votre part.</span>
+    </h1>
+    <p class="hero-sub">
+      Entretien de bureaux, nettoyage de vitres, cabinets médicaux, fin de
+      chantier et Airbnb. Réactif, fiable, dans tout le département de l'Hérault.
+    </p>
+    <a href="mailto:robin.laq@gmail.com?subject=Demande%20de%20devis%20-%20Impec%20Nettoyage" class="btn" aria-label="Demander un devis gratuit par email">Demander un devis gratuit</a>
+    <p class="hero-credibility">Bureaux&nbsp; ·&nbsp; Vitres&nbsp; ·&nbsp; Cabinets&nbsp; ·&nbsp; Fin de chantier&nbsp; ·&nbsp; Airbnb</p>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec-pad bg-mist" id="services">
+  <div class="container">
+    <div class="services-head reveal">
+      <p class="eyebrow">Services</p>
+      <h2 class="section-title">Ce que nous faisons.</h2>
+      <p class="section-sub">Cinq prestations, une seule exigence : l'impeccable.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- 1 -->
+      <div class="service-col reveal">
+        <div class="tick"></div>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="14" rx="1"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="9" y1="21" x2="15" y2="21"/>
+            <line x1="12" y1="18" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3>Bureaux &amp; locaux</h3>
+        <p>Entretien régulier ou ponctuel. Sols, sanitaires, espaces communs. Contrats hebdomadaires ou mensuels.</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="service-col reveal">
+        <div class="tick"></div>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="3" width="16" height="18" rx="1"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+          </svg>
+        </div>
+        <h3>Nettoyage de vitres</h3>
+        <p>Intérieur et extérieur. Façades vitrées, cloisons transparentes, fenêtres de tous formats.</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="service-col reveal">
+        <div class="tick"></div>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="13"/>
+            <line x1="8" y1="9" x2="16" y2="9"/>
+            <path d="M5 13h14v5a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3z"/>
+          </svg>
+        </div>
+        <h3>Cabinets médicaux</h3>
+        <p>Protocoles adaptés aux exigences sanitaires. Médecins, dentistes, kinés, paramédicaux.</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="service-col reveal">
+        <div class="tick"></div>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21V8l9-5 9 5v13"/>
+            <path d="M3 21h18"/>
+            <path d="M9 21v-6h6v6"/>
+          </svg>
+        </div>
+        <h3>Fin de chantier</h3>
+        <p>Nettoyage complet après travaux. Livraison d'un espace prêt à occuper, sans poussière ni résidu.</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="service-col reveal">
+        <div class="tick"></div>
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11l9-7 9 7"/>
+            <path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/>
+            <path d="M9 20v-5h6v5"/>
+          </svg>
+        </div>
+        <h3>Airbnb &amp; locations</h3>
+        <p>Remise en état entre locataires. Rapide, soigné, coordonné avec vos réservations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTEURS ===== -->
+<section class="sec-pad" id="secteurs">
+  <div class="container">
+    <div class="reveal">
+      <p class="eyebrow">Secteurs</p>
+      <h2 class="section-title">Nous intervenons pour qui&nbsp;?</h2>
+    </div>
+
+    <div class="secteurs-grid">
+      <p class="secteurs-text reveal">
+        Que vous gériez un cabinet libéral, des bureaux d'entreprise, un appartement
+        en location saisonnière ou un chantier à livrer — nous adaptons notre
+        intervention à vos contraintes horaires et à vos exigences spécifiques.
+      </p>
+
+      <div class="secteurs-list reveal">
+        <div class="secteur-item">
+          <p class="s-title">Entreprises &amp; TPE</p>
+          <p class="s-desc">Contrats d'entretien récurrents, flexibles.</p>
+        </div>
+        <div class="secteur-item">
+          <p class="s-title">Professions de santé</p>
+          <p class="s-desc">Respect des normes d'hygiène médicale.</p>
+        </div>
+        <div class="secteur-item">
+          <p class="s-title">Promoteurs immobiliers</p>
+          <p class="s-desc">Nettoyage fin de chantier, livraison propre.</p>
+        </div>
+        <div class="secteur-item">
+          <p class="s-title">Propriétaires Airbnb</p>
+          <p class="s-desc">Gestion au roulement, coordination avec Airbnb.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONFIANCE ===== -->
+<section class="sec-pad confiance" id="confiance">
+  <div class="container">
+    <div class="confiance-head reveal">
+      <p class="eyebrow">Pourquoi nous</p>
+      <h2 class="section-title">L'impeccable, c'est notre standard.</h2>
+    </div>
+
+    <div class="confiance-grid">
+      <div class="conf-col reveal">
+        <div class="conf-num">34</div>
+        <p class="conf-label">Département couvert · Hérault</p>
+      </div>
+      <div class="conf-col reveal">
+        <div class="conf-num">48h</div>
+        <p class="conf-label">Délai de réponse garanti</p>
+      </div>
+      <div class="conf-col reveal">
+        <div class="conf-num">100%</div>
+        <p class="conf-label">Satisfaction ou retour sans frais</p>
+      </div>
+    </div>
+
+    <p class="conf-footnote reveal">Devis gratuit par email · robin.laq@gmail.com</p>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section class="sec-pad bg-mist" id="temoignages">
+  <div class="container">
+    <div class="temoignages-head reveal">
+      <p class="eyebrow">Témoignages</p>
+      <h2 class="section-title">Ils nous font confiance.</h2>
+    </div>
+
+    <div class="temoignages-grid">
+      <figure class="temoignage reveal">
+        <div class="stars" aria-label="Note 5 sur 5">★★★★★</div>
+        <blockquote>« Intervention rapide, travail soigné. Notre cabinet médical est entretenu chaque semaine, toujours impeccable avant les consultations. »</blockquote>
+        <div class="line-thin"></div>
+        <figcaption class="author">Dr. Isabelle M.<br>Médecin généraliste · Montpellier</figcaption>
+      </figure>
+
+      <figure class="temoignage reveal">
+        <div class="stars" aria-label="Note 5 sur 5">★★★★★</div>
+        <blockquote>« Fin de chantier traitée en 48h, les acquéreurs ont pu visiter dans de parfaites conditions. Efficace et ponctuel. »</blockquote>
+        <div class="line-thin"></div>
+        <figcaption class="author">Thomas R.<br>Promoteur immobilier · Hérault</figcaption>
+      </figure>
+
+      <figure class="temoignage reveal">
+        <div class="stars" aria-label="Note 5 sur 5">★★★★★</div>
+        <blockquote>« Gestion des ménages Airbnb déléguée entièrement. Les voyageurs laissent des 5 étoiles sur la propreté depuis qu'on travaille ensemble. »</blockquote>
+        <div class="line-thin"></div>
+        <figcaption class="author">Camille D.<br>Propriétaire Airbnb · Sète</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container contact-inner">
+    <p class="eyebrow">Contact</p>
+    <h2 class="section-title">Parlons de votre besoin.</h2>
+    <p class="section-sub">
+      Décrivez votre espace et votre besoin par email — nous répondons
+      sous 48h avec un devis clair.
+    </p>
+    <a href="mailto:robin.laq@gmail.com?subject=Demande%20de%20devis%20-%20Impec%20Nettoyage" class="contact-email" aria-label="Envoyer un email à Impec Nettoyage">robin.laq@gmail.com</a>
+    <p class="contact-loc">Hérault (34) — déplacements sur tout le département</p>
+    <a href="mailto:robin.laq@gmail.com?subject=Demande%20de%20devis%20-%20Impec%20Nettoyage" class="btn" aria-label="Envoyer un email à Impec Nettoyage">Envoyer un email</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="f-name">Impec Nettoyage</p>
+        <p class="f-tag">Nettoyage professionnel · Hérault (34)</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Navigation pied de page">
+        <a href="#services">services</a>
+        <a href="#secteurs">secteurs</a>
+        <a href="#confiance">confiance</a>
+        <a href="#contact">contact</a>
+      </nav>
+
+      <div class="footer-contact">
+        <a href="mailto:robin.laq@gmail.com" class="f-email" aria-label="Envoyer un email à Impec Nettoyage">robin.laq@gmail.com</a>
+        <a href="https://instagram.com/impec_nettoyage" class="f-insta" target="_blank" rel="noopener" aria-label="Instagram Impec Nettoyage">@impec_nettoyage</a>
+      </div>
+    </div>
+
+    <div class="footer-rule"></div>
+    <p class="footer-bottom">© 2026 Impec Nettoyage · Site réalisé par Payment Flow</p>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+/* ===== HEADER AU SCROLL ===== */
+(function () {
+  var header = document.getElementById('header');
+  function onScroll() {
+    if (window.scrollY > 60) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ===== MENU MOBILE ===== */
+(function () {
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  var links = menu.querySelectorAll('a');
+
+  function toggle(open) {
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  btn.addEventListener('click', function () {
+    toggle(!menu.classList.contains('open'));
+  });
+  links.forEach(function (link) {
+    link.addEventListener('click', function () { toggle(false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) { toggle(false); }
+  });
+})();
+
+/* ===== SCROLL REVEAL ===== */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('revealed'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(function (el) { obs.observe(el); });
+
+  /* stagger des colonnes services */
+  var cols = document.querySelectorAll('.services-grid .service-col');
+  cols.forEach(function (col, i) {
+    col.style.transitionDelay = (0.05 * (i + 1)) + 's';
+  });
+})();
+
+/* ===== SCROLLSPY ===== */
+(function () {
+  var sections = document.querySelectorAll('main section[id]');
+  var navLinks = document.querySelectorAll('.nav-desktop a.nav-link');
+  if (!('IntersectionObserver' in window) || !navLinks.length) { return; }
+
+  var map = {};
+  navLinks.forEach(function (link) {
+    map[link.getAttribute('href').slice(1)] = link;
+  });
+
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function (l) { l.classList.remove('active'); });
+        var active = map[entry.target.id];
+        if (active) { active.classList.add('active'); }
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(function (sec) { spy.observe(sec); });
+})();
+</script>
+</body>
+</html>
